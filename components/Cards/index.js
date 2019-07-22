@@ -23,13 +23,10 @@ const articlePromise = axios.get(
 );
 articlePromise
   .then(axiosData => {
-    console.log(articlePromise);
-    console.log(Object.entries(axiosData.data.articles));
     Object.entries(axiosData.data.articles).forEach(articleElement => {
       console.log(articleElement);
       new ArticleCard(articleElement);
     });
-    //   new GithubCards(axiosData);
   })
   .catch(err => {
     console.log("error: " + err);
@@ -40,6 +37,7 @@ class ArticleCard {
     this.articleArray = article;
     this.articleTitle = article[0];
     this.articleProperties = article[1];
+
     const cardsContainer = document.querySelector(".cards-container");
 
     this.articleProperties.forEach(articleData => {
